@@ -19,7 +19,7 @@ namespace EF_Core_Project.Entities
         [InverseProperty(nameof(Department.Manager))]
         public Department ManageDepartment { get; set; }
         [ForeignKey(nameof(WorkFroDepartment))]
-        public int? Dept_Id { get; set; }
+        public int? DepartmentId { get; set; }
         [InverseProperty(nameof(Department.Instructors))]
         public Department WorkFroDepartment { get; set; }
 

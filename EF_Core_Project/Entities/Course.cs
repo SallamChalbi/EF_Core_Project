@@ -15,7 +15,7 @@ namespace EF_Core_Project.Entities
         public string? Description { get; set; }
 
         [ForeignKey(nameof(Topic))]
-        public int? Top_Id { get; set; }
+        public int? TopicId { get; set; }
         public Topic Topic { get; set; }
 
         public ICollection<StudentCourse> CourseStudents { get; set; } = new HashSet<StudentCourse>();
