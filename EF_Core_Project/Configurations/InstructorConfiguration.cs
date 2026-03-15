@@ -13,7 +13,7 @@ namespace EF_Core_Project.Configurations
     {
         public void Configure(EntityTypeBuilder<Instructor> builder)
         {
-            builder.Property(I => I.Salary).HasColumnType("decimal(18,3");
+            builder.Property(I => I.Salary).HasColumnType("decimal(18,3)");
             builder.Property(I => I.Adress).HasDefaultValue("Sfax");
         }
     }
