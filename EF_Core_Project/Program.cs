@@ -301,26 +301,43 @@ namespace EF_Core_Project
 
             #region Eager vs Easy Loading 
             #region Eager Loading
-            var inst1 = dbContext.Instructors.FirstOrDefault(I => I.Id == 1);
-            var inst2 = dbContext.Instructors.FirstOrDefault(I => I.Id == 2);
-            inst1.DepartmentId = 10;
-            inst2.DepartmentId = 10;
-            dbContext.SaveChanges();
+            //var inst1 = dbContext.Instructors.FirstOrDefault(I => I.Id == 1);
+            //var inst2 = dbContext.Instructors.FirstOrDefault(I => I.Id == 2);
+            //inst1.DepartmentId = 10;
+            //inst2.DepartmentId = 10;
+            //dbContext.SaveChanges();
 
-            var instructor = (from I in dbContext.Instructors.Include(I => I.WorkFroDepartment)
-                              where I.Id == 1
-                              select I).FirstOrDefault();
-            Console.WriteLine($"InstructorId = {instructor.Id} ::: InstructorName = {instructor.Name} ::: WorkForDepartment = {instructor.WorkFroDepartment.Name}");
+            //var instructor = (from I in dbContext.Instructors.Include(I => I.WorkFroDepartment)
+            //                  where I.Id == 1
+            //                  select I).FirstOrDefault();
+            //Console.WriteLine($"InstructorId = {instructor.Id} ::: InstructorName = {instructor.Name} ::: WorkForDepartment = {instructor.WorkFroDepartment.Name}");
             #endregion
 
             #region Lazy Loading 
-            var department = (from D in dbContext.Departments
-                              where D.Id == 10
-                              select D).FirstOrDefault();
-            Console.WriteLine($"Instructors in Departments {department.Name} :");
-            foreach (var ins in department.Instructors)
-                Console.WriteLine($"- {ins.Name}");
+            //var department = (from D in dbContext.Departments
+            //                  where D.Id == 10
+            //                  select D).FirstOrDefault();
+            //Console.WriteLine($"Instructors in Departments {department.Name} :");
+            //foreach (var ins in department.Instructors)
+            //    Console.WriteLine($"- {ins.Name}");
             #endregion
+            #endregion
+
+            #region Join
+            var Result = from I in dbContext.Instructors
+                         join D in dbContext.Departments
+                         on I.DepartmentId equals D.Id
+                         where I.Adress == "Sfax"
+                         select new
+                         {
+                             InstructorId = I.Id,
+                             InstructorName = I.Name,
+                             DepartmentId = D.Id,
+                             DepartmentName = D.Name,
+                             I.Adress
+                         };
+            foreach(var item in Result)
+                Console.WriteLine(item);
             #endregion
         }
     }
