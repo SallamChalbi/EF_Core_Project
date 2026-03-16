@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EF_Core_Project.Entities
 {
-    internal class CourseInstructor
+    public class CourseInstructor
     {
         public int InstructorId { get; set; }
         public int CourseId { get; set;}

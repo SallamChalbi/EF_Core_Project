@@ -13,7 +13,7 @@ namespace EF_Core_Project.Contexts
     internal class ITIProjectDbContext: DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Server=.; Database=ITIProject; Trusted_Connection=True");
+            => optionsBuilder.UseLazyLoadingProxies().UseSqlServer("Server=.; Database=ITIProject; Trusted_Connection=True");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

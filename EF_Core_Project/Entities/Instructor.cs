@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EF_Core_Project.Entities
 {
-    internal class Instructor
+    public class Instructor
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -17,12 +17,12 @@ namespace EF_Core_Project.Entities
         public double HourRate { get; set; }
 
         [InverseProperty(nameof(Department.Manager))]
-        public Department ManageDepartment { get; set; }
+        public virtual Department ManageDepartment { get; set; }
         [ForeignKey(nameof(WorkFroDepartment))]
         public int? DepartmentId { get; set; }
         [InverseProperty(nameof(Department.Instructors))]
-        public Department WorkFroDepartment { get; set; }
+        public virtual Department WorkFroDepartment { get; set; }
 
-        public ICollection<CourseInstructor> InstructorCourses { get; set; } = new HashSet<CourseInstructor>();
+        public virtual ICollection<CourseInstructor> InstructorCourses { get; set; } = new HashSet<CourseInstructor>();
     }
 }
