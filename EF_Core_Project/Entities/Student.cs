@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EF_Core_Project.Entities
 {
-    internal class Student
+    public class Student
     {
         public int Id { get; set; }
         public string FName { get; set; }
@@ -17,8 +17,8 @@ namespace EF_Core_Project.Entities
 
         //[ForeignKey(nameof(Department))] // if the foreign key is 'Name of property + Id/ID' like property 'Department' and foreign key 'DepartmentId' or 'DepartmentID' don't use data annotation cause the EF Core will Generate a hiding property like it and make nullable=false even if use '?'
         public int? DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public virtual Department Department { get; set; }
 
-        public ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
+        public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
     }
 }

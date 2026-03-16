@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EF_Core_Project.Entities
 {
-    internal class Topic
+    public class Topic
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Course> Courses { get; set; } = new HashSet<Course>();
+        public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
     }
 }
