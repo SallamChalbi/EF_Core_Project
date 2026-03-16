@@ -14,7 +14,7 @@ namespace EF_Core_Project.Entities
         public int Duration { get; set; }
         public string? Description { get; set; }
 
-        [ForeignKey(nameof(Topic))]
+        //[ForeignKey(nameof(Topic))] // if the foreign key is 'Name of property + Id/ID' like property 'Topic' and foreign key 'TopicId' or 'TopicID' don't use data annotation cause the EF Core will Generate a hiding property like it and make nullable=false even if use '?'
         public int? TopicId { get; set; }
         public Topic Topic { get; set; }
 

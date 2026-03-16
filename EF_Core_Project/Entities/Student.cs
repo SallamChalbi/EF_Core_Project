@@ -15,7 +15,7 @@ namespace EF_Core_Project.Entities
         public string? Adress { get; set; }
         public int? Age { get; set; }
 
-        [ForeignKey(nameof(Department))]
+        //[ForeignKey(nameof(Department))] // if the foreign key is 'Name of property + Id/ID' like property 'Department' and foreign key 'DepartmentId' or 'DepartmentID' don't use data annotation cause the EF Core will Generate a hiding property like it and make nullable=false even if use '?'
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
 
